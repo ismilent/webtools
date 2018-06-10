@@ -8,12 +8,12 @@ import aiohttp
 from tqdm import tqdm
 from asyncio.queues import Queue
 
-MAX_SEMAPHORE_NUM = 200 # 最大协程数量
+MAX_SEMAPHORE_NUM = 512 # 最大协程数量
 
 
-async def wait_with_progress(coroutines):
-    for f in tqdm(asyncio.as_completed(coroutines), total=len(coroutines)):
-        await f
+# async def wait_with_progress(coroutines):
+#     for f in tqdm(asyncio.as_completed(coroutines), total=len(coroutines)):
+#         await f
 
 async def fetch(session, url):
     async with session.head(url) as resopnse:
